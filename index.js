@@ -23,6 +23,11 @@ app.post('/banner', function (req, res) {
   
 })
 
+app.get('/bannerItem',async function(req,res){
+ let data = await Banner.findOne()
+ res.send(data)
+})
+
 
 
 
