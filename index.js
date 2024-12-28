@@ -28,6 +28,15 @@ app.get('/bannerItem',async function(req,res){
  res.send(data)
 })
 
+app.put('/banner/:id',function(req,res){
+  Banner.findByIdAndUpdate(req.params.id,req.body).then(()=>{
+    res.send({message:"Navbar Updated"})
+  })
+  console.log(req.body);
+  
+ 
+  })
+
 
 
 
