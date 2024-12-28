@@ -2,6 +2,7 @@ const express = require('express')
 var cors = require('cors')
 const app = express()
 const mongoose = require('mongoose');
+const Banner = require('./Model/Banner')
 
 
 
@@ -13,9 +14,19 @@ app.use(express.json())
 
 
 
-app.get('/', function (req, res) {
-  res.send('Hello World')
+app.post('/banner', function (req, res) {
+
+  let data = new Banner(req.body)
+  data.save()
+  res.send('data received')
+  console.log(req.body);
+  
 })
+
+
+
+
+
 
 app.listen(3000)
 
