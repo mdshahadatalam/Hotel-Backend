@@ -4,6 +4,7 @@ var cors = require('cors')
 const app = express()
 const mongoose = require('mongoose');
 const Banner = require('./Model/Banner')
+const Room = require('./Model/Room')
 
 
 
@@ -34,9 +35,13 @@ app.put('/banner/:id',function(req,res){
     res.send({message:"Navbar Updated"})
   })
   console.log(req.body);
-  
- 
-  })
+})
+
+
+app.post('/room',function(req,res){
+ console.log(req.body);
+
+})
 
 
 
