@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 var cors = require('cors')
 const app = express()
@@ -6,7 +7,7 @@ const Banner = require('./Model/Banner')
 
 
 
-mongoose.connect('mongodb+srv://mdshahadat25:YRY8rbNOKXr4xUnW@cluster0.kj5c3.mongodb.net/Hotel?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(`mongodb+srv://${process.env.REACT_APP_USERNAME}:${process.env.REACT_APP_PASSWORD}@cluster0.kj5c3.mongodb.net/Hotel?retryWrites=true&w=majority&appName=Cluster0`)
   .then(() => console.log('Connected!'));
 
 app.use(cors())
