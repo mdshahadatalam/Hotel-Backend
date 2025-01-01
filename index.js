@@ -36,7 +36,7 @@ app.post('/banner',function (req, res) {
   let data = new Banner(req.body)
   data.save()
   res.send('data received')
-  console.log(req.body);
+  // console.log(req.body);
   
 })
 
@@ -49,7 +49,7 @@ app.put('/banner/:id',function(req,res){
   Banner.findByIdAndUpdate(req.params.id,req.body).then(()=>{
     res.send({message:"Navbar Updated"})
   })
-  console.log(req.body);
+  // console.log(req.body);
 })
 
 
@@ -66,7 +66,10 @@ app.get('/roomItem', async function(req,res){
 })
 
 
-
+app.delete('/room/:id', async function(req,res){
+let data = await Room.findByIdAndDelete(req.params.id,req.body)
+res.send({message:"Room Deleted"})
+})
 
 
 
@@ -75,4 +78,5 @@ app.listen(3000)
 
 
 // mdshahadat25
-// YRY8rbNOKXr4xUnW
+// YRY8rbNOKXr4xUnW 
+
