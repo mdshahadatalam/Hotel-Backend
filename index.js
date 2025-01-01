@@ -60,6 +60,11 @@ app.post('/room', upload.single('image'),function(req,res){
  res.send("data received")
 })
 
+app.get('/roomItem', async function(req,res){
+  let data = await Room.find()
+  res.send(data)
+})
+
 
 
 
