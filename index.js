@@ -5,7 +5,13 @@ const app = express()
 const mongoose = require('mongoose');
 const Banner = require('./Model/Banner')
 const Room = require('./Model/Room')
-const multer  = require('multer')
+const Services = require('./Model/Services')
+
+
+
+const multer  = require('multer');
+
+ 
 
 
 const storage = multer.diskStorage({
@@ -75,6 +81,20 @@ app.put('/rooms/:id',upload.single('image'),function(req,res){
   Room.findByIdAndUpdate(req.params.id,{...req.body,image:req.file.path}).then(()=>{
     res.send({message:"Room Updated"})
   })
+  
+})
+
+
+app.post('/service', upload.single('serImg'), function(req,res){
+  let data = new Services({...req.body,serImg:req.file.path})
+  data.save()
+  res.send("data received")
+  
+})
+
+app.get('/serviceItem',async function(req,res){
+  let data = await Services.find()
+  res.send(data)
   
 })
 
