@@ -71,6 +71,13 @@ let data = await Room.findByIdAndDelete(req.params.id,req.body)
 res.send({message:"Room Deleted"})
 })
 
+app.put('/rooms/:id',upload.single('image'),function(req,res){
+  Room.findByIdAndUpdate(req.params.id,{...req.body,image:req.file.path}).then(()=>{
+    res.send({message:"Room Updated"})
+  })
+  
+})
+
 
 
 app.listen(3000)
